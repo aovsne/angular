@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- angular directives -->
+<html ng-app>
+<head>
+	<title>Angular practice</title>
+	<link rel="shortcut icon" href="#">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<!-- angular directives -->
+	<!-- <div>
+		<input type="text" ng-model="abc"> -->
+		<!-- angular expression -->
+		<!-- <h2>{{abc}}</h2> -->
+	<!-- </div>
+	<div ng-init="numOfBooks = 10">
+		Number of Books: <input type="number" ng-model="numOfBooks">
+		<p>We have {{numOfBooks}} million books.</p>
+	</div> -->
+	<!-- MVC (design pattern) model(data), view(presentation) and controller(business logic) -->
+
+	<div class="header-wrapper" ng-controller="headerCtrl">
+		<span class="logo">{{appDetails.logo}}</span><br>
+		<span class="tagline">{{appDetails.tagline}}</span>
+		<div class="nav-wrapper">
+			<ul class="nav nav-pills dudu">
+				<li class="active"><a href="#">BOOKS</a> </li>
+				<li><a href="#">Cart</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="booklistwrapper" ng-controller="bookListCtrl">
+		<div class="findbook form-group">
+				<input type="text" class="form-control gugu" placeholder="Search here">
+		</div>
+		<div class="novel container" ng-repeat="book in books">
+			<div class="col-sm-3">
+				<img src="img/{{book.imgUrl}}" class="img-thumbnail">
+			</div>
+			<div class="col-sm-9">
+				<h2>{{book.name}}</h2>
+				<p>{{book.price}}</p>
+				<ul class="list-unstyle list-inline">
+					<li>Rating:{{book.rating}}</li>
+					<li>Binding:{{book.binding}}</li>
+					<li>Publisher:{{book.publisher}}</li>
+					<li>Released:{{book.releaseDate}}</li>
+				</ul>
+				<p>{{book.details}}</p>
+				<button class="btn btn-success ">Add to cart</button>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

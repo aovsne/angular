@@ -1,0 +1,21 @@
+.logo{
+	font-size:25px;
+	font-family: 'Audiowide', cursive;
+}
+.header-wrapper{
+	margin:40px;
+	text-align: center
+}
+.dudu{
+	text-align: center;
+}
+.novel{
+	border:1px solid grey;
+	padding:15px;
+}
+input.gugu{
+	width:50%;
+}
+.findbook{
+	margin-left:50px;
+}
