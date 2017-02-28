@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- angular directives -->
-<html ng-app>
+<html ng-app="myApp">
 <head>
 	<title>Angular practice</title>
 	<link rel="shortcut icon" href="#">
@@ -28,39 +28,19 @@
 		<span class="tagline">{{appDetails.tagline}}</span>
 		<div class="nav-wrapper">
 			<ul class="nav nav-pills dudu">
-				<li class="active"><a href="#">BOOKS</a> </li>
-				<li><a href="#">Cart</a></li>
+				<li class="active"><a href="#/books">BOOKS</a> </li>
+				<li><a href="#/cart">Cart</a></li>
 			</ul>
 		</div>
 	</div>
 	
-	<div id="booklistwrapper" ng-controller="bookListCtrl">
-		<div class="findbook form-group">
-				<input type="text" class="form-control gugu" placeholder="Search here">
-		</div>
-		<div class="novel container" ng-repeat="book in books">
-			<div class="col-sm-3">
-				<img src="img/{{book.imgUrl}}" class="img-thumbnail">
-			</div>
-			<div class="col-sm-9">
-				<h2>{{book.name}}</h2>
-				<p>{{book.price}}</p>
-				<ul class="list-unstyle list-inline">
-					<li>Rating:{{book.rating}}</li>
-					<li>Binding:{{book.binding}}</li>
-					<li>Publisher:{{book.publisher}}</li>
-					<li>Released:{{book.releaseDate}}</li>
-				</ul>
-				<p>{{book.details}}</p>
-				<button class="btn btn-success ">Add to cart</button>
-			</div>
-		</div>
-	</div>
+	<div ng-view></div>
 
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>

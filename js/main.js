@@ -1,11 +1,31 @@
-var headerCtrl = function($scope){
+var myApp = angular.module("myApp", ["ngRoute"])
+// configuration route
+myApp.config(function($routeProvider){
+	$routeProvider
+	.when("/books", {
+		templateUrl:"partials/book.html",
+		controller:"bookListCtrl"
+	})
+	.when("/cart", {
+		templateUrl: "partials/cart.html"
+
+	})
+	.otherwise({
+		redirectTo: "/books"
+	})
+})
+
+myApp.controller('headerCtrl', function($scope){
 	$scope.appDetails = {
-		logo: "Bookart",
+		logo: "BooKart",
 		tagline: "We have 1 million Books."
 	}
-}
+})
 
-var bookListCtrl = function($scope){
+
+
+
+myApp.controller("bookListCtrl", function($scope){
 	$scope.books = [
 		{
 			imgUrl: "dalailama.jpg",
@@ -48,4 +68,7 @@ var bookListCtrl = function($scope){
 			details: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo"
 		},
 	]
-}
+	$scope.addToCart = function(book){
+		console.log("add to Cart: "+ book)
+	}
+})
