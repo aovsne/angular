@@ -7,26 +7,32 @@ myApp.config(function($routeProvider){
 		controller:"bookListCtrl"
 	})
 	.when("/cart", {
-		templateUrl: "partials/cart.html"
+		templateUrl: "partials/cart.html",
+		controller: "cartListCtrl"
 
 	})
 	.otherwise({
 		redirectTo: "/books"
 	})
 })
-
-myApp.controller('headerCtrl', function($scope){
-	$scope.appDetails = {
-		logo: "BooKart",
-		tagline: "We have 1 million Books."
+myApp.factory("cartService", function(){
+	var cart = []
+	return{
+		getCart : function(){
+			return cartService
+		},
+		addToCart: function(book){
+			cart.push(book)
+		},
+		buy: function(){
+			alert("Thanks for buying", book.name)
+		}
 	}
 })
 
 
-
-
-myApp.controller("bookListCtrl", function($scope){
-	$scope.books = [
+myApp.factory("bookService", function(){
+	var books =  [
 		{
 			imgUrl: "dalailama.jpg",
 			name: "Little Book of Wisdom",
@@ -68,7 +74,33 @@ myApp.controller("bookListCtrl", function($scope){
 			details: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo"
 		},
 	]
+	return{
+		getBooks: function(){
+			return books
+		}
+	}
+})
+
+myApp.controller('cartListCtrl', function($scope, cartService){
+	$scope.cart = cartService.getCart() 
+	$scope.buy = function(book){
+		cartService.buy(book)
+	}
+})
+
+myApp.controller('headerCtrl', function($scope){
+	$scope.appDetails = {
+		logo: "BooKart",
+		tagline: "We have 1 million Books."
+	}
+})
+
+
+
+
+myApp.controller("bookListCtrl", function($scope, bookService, cartService){
+	$scope.books = bookService.getBooks()
 	$scope.addToCart = function(book){
-		console.log("add to Cart: "+ book)
+		cartService.addToCart(book)
 	}
 })
